@@ -3,36 +3,29 @@
 @section('content')
     <div data-guest-page class="space-y-6">
         <section class="overflow-hidden rounded-lg bg-[#103d2a] p-5 text-white lg:p-8">
-            <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-center">
-                <div>
-                    <p class="text-sm font-bold text-[#aee4c7]">Micro-escrow for WhatsApp and Instagram sellers</p>
-                    <h1 class="mt-3 text-3xl font-bold leading-tight lg:text-5xl">Safer social commerce payments for vendors and buyers.</h1>
-                    <p class="mt-4 max-w-2xl text-sm leading-6 text-[#d9f4e7] lg:text-base">VendShield helps vendors create escrow checkout links, verifies receipts with AI, and releases payment after delivery confirmation.</p>
+            <div class="max-w-4xl">
+                <p class="inline-flex rounded-full bg-white/12 px-3 py-1 text-sm font-bold text-[#aee4c7]">Micro-escrow for WhatsApp and Instagram sellers</p>
+                <h1 class="mt-5 text-4xl font-bold leading-tight lg:text-6xl">Turn social commerce payments into protected escrow links.</h1>
+                <p class="mt-5 max-w-2xl text-sm leading-6 text-[#d9f4e7] lg:text-base">VendShield helps vendors collect safer payments, verify receipts with AI, and release funds only after delivery is confirmed.</p>
 
-                    <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:max-w-lg">
-                        <a href="{{ route('register') }}" class="primary-button bg-white text-[#103d2a] shadow-black/10">Create Vendor Account</a>
-                        <a href="{{ route('login') }}" class="ghost-button border-white/20 bg-white/10 text-white">Vendor Login</a>
-                    </div>
+                <div class="mt-7 grid gap-3 sm:grid-cols-2 lg:max-w-lg">
+                    <a href="{{ route('register') }}" class="primary-button bg-white text-[#103d2a] shadow-black/10">Create Vendor Account</a>
+                    <a href="{{ route('login') }}" class="ghost-button border-white/20 bg-white/10 text-white">Vendor Login</a>
                 </div>
+            </div>
 
+            <div class="mt-8 grid gap-3 sm:grid-cols-3">
                 <div class="rounded-lg bg-white/10 p-4">
-                    <div class="rounded-lg bg-white p-4 text-[#102019]">
-                        <div class="flex items-center justify-between gap-3">
-                            <div>
-                                <p class="text-sm font-bold text-[#16834f]">Sample checkout</p>
-                                <p class="mt-1 text-xl font-bold">Black Nike Sneakers</p>
-                            </div>
-                            <span class="status-pill status-warning">Pending</span>
-                        </div>
-                        <div class="mt-4 space-y-3 text-sm">
-                            <div class="flex justify-between"><span class="text-[#668175]">Item price</span><span class="font-bold">&#8358;50,000</span></div>
-                            <div class="flex justify-between"><span class="text-[#668175]">Delivery</span><span class="font-bold">&#8358;2,000</span></div>
-                            <div class="border-t border-[#edf2ee] pt-3">
-                                <div class="flex justify-between text-base"><span class="font-bold">Buyer pays</span><span class="font-bold text-[#0c6f43]">&#8358;52,000</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-3 text-sm leading-6 text-[#d9f4e7]">A buyer can open the link, pay, upload receipt, and confirm delivery without creating an account.</p>
+                    <p class="text-2xl font-bold">AI</p>
+                    <p class="mt-1 text-sm text-[#d9f4e7]">Receipt verification</p>
+                </div>
+                <div class="rounded-lg bg-white/10 p-4">
+                    <p class="text-2xl font-bold">Escrow</p>
+                    <p class="mt-1 text-sm text-[#d9f4e7]">Payment protection</p>
+                </div>
+                <div class="rounded-lg bg-white/10 p-4">
+                    <p class="text-2xl font-bold">Guest</p>
+                    <p class="mt-1 text-sm text-[#d9f4e7]">Buyer checkout</p>
                 </div>
             </div>
         </section>
