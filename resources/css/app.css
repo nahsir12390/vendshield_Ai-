@@ -71,7 +71,19 @@
     }
 
     .dashboard-hero {
-        @apply overflow-hidden rounded-lg bg-[#103d2a] p-5 text-white lg:p-6;
+        @apply overflow-hidden rounded-lg border border-[#dce7df] bg-white p-5 text-[#102019] lg:p-6;
+    }
+
+    .soft-hero {
+        @apply overflow-hidden rounded-lg border border-[#dce7df] bg-white p-5 text-[#102019] lg:p-6;
+    }
+
+    .soft-eyebrow {
+        @apply text-sm font-bold text-[#16834f];
+    }
+
+    .soft-copy {
+        @apply text-sm leading-6 text-[#668175];
     }
 
     .stat-card {

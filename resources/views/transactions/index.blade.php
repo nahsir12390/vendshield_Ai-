@@ -2,14 +2,14 @@
 
 @section('content')
     <div data-page="transactions" data-protected class="space-y-5 lg:space-y-6">
-        <section class="rounded-lg bg-[#103d2a] p-5 text-white lg:p-6">
+        <section class="soft-hero">
             <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                    <p class="text-sm font-bold text-[#aee4c7]">Vendor history</p>
+                    <p class="soft-eyebrow">Vendor history</p>
                     <h1 class="mt-2 text-3xl font-bold leading-tight lg:text-4xl">Transactions</h1>
-                    <p data-transaction-summary class="mt-3 max-w-2xl text-sm leading-6 text-[#d9f4e7]">Track pending, completed, disputed, and verified escrow activity.</p>
+                    <p data-transaction-summary class="mt-3 max-w-2xl soft-copy">Track pending, completed, disputed, and verified escrow activity.</p>
                 </div>
-                <a href="{{ route('transactions.create') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-bold text-[#103d2a] shadow-lg shadow-black/10">Create New Transaction</a>
+                <a href="{{ route('transactions.create') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#16a35f] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#16a35f]/15">Create New Transaction</a>
             </div>
         </section>
 

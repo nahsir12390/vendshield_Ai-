@@ -2,23 +2,23 @@
 
 @section('content')
     <div data-guest-page class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_520px] lg:items-start">
-        <section class="rounded-lg bg-[#103d2a] p-5 text-white lg:min-h-[620px] lg:p-6">
-            <p class="text-sm font-bold text-[#aee4c7]">Start selling safely</p>
+        <section class="soft-hero lg:min-h-[620px]">
+            <p class="soft-eyebrow">Start selling safely</p>
             <h1 class="mt-3 text-3xl font-bold leading-tight lg:text-4xl">Create escrow links your buyers can trust.</h1>
-            <p class="mt-4 max-w-xl text-sm leading-6 text-[#d9f4e7]">Register as a vendor, share checkout links on WhatsApp or Instagram, and let VendShield verify payments before delivery.</p>
+            <p class="mt-4 max-w-xl soft-copy">Register as a vendor, share checkout links on WhatsApp or Instagram, and let VendShield verify payments before delivery.</p>
 
             <div class="mt-8 space-y-3">
-                <div class="activity-item bg-white/10 text-white">
+                <div class="activity-item">
                     <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#44d07b]"></span>
-                    <p class="text-sm text-[#d9f4e7]">New vendors start with a trust score of 50/100.</p>
+                    <p class="text-sm text-[#668175]">New vendors start with a trust score of 50/100.</p>
                 </div>
-                <div class="activity-item bg-white/10 text-white">
+                <div class="activity-item">
                     <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#44d07b]"></span>
-                    <p class="text-sm text-[#d9f4e7]">Successful transactions help improve trust.</p>
+                    <p class="text-sm text-[#668175]">Successful transactions help improve trust.</p>
                 </div>
-                <div class="activity-item bg-white/10 text-white">
+                <div class="activity-item">
                     <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#44d07b]"></span>
-                    <p class="text-sm text-[#d9f4e7]">Payout account details help vendors receive released funds.</p>
+                    <p class="text-sm text-[#668175]">Payout account details help vendors receive released funds.</p>
                 </div>
             </div>
         </section>

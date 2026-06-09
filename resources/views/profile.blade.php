@@ -2,17 +2,17 @@
 
 @section('content')
     <div data-page="profile" data-protected class="space-y-5 lg:space-y-6">
-        <section class="rounded-lg bg-[#103d2a] p-5 text-white lg:p-6">
+        <section class="soft-hero">
             <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
                 <div class="flex items-center gap-4">
-                    <span class="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-white/12 text-xl font-bold" data-profile-initials>VS</span>
+                    <span class="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-[#103d2a] text-xl font-bold text-white" data-profile-initials>VS</span>
                     <div>
-                        <p class="text-sm font-bold text-[#b8dacb]">Vendor Profile</p>
+                        <p class="soft-eyebrow">Vendor Profile</p>
                         <h1 data-profile-name class="mt-1 text-3xl font-bold leading-tight">Vendor</h1>
-                        <p data-profile-phone class="mt-1 text-sm text-[#d9f4e7]">No phone saved</p>
+                        <p data-profile-phone class="mt-1 text-sm text-[#668175]">No phone saved</p>
                     </div>
                 </div>
-                <span class="w-fit rounded-full bg-white/12 px-3 py-1 text-xs font-bold text-[#d9f4e7]">Active vendor</span>
+                <span class="w-fit rounded-full bg-[#eef8f1] px-3 py-1 text-xs font-bold text-[#0c6f43]">Active vendor</span>
             </div>
         </section>
 

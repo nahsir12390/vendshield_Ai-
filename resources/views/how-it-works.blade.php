@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="space-y-6">
-        <section class="rounded-lg bg-[#103d2a] p-5 text-white lg:p-7">
-            <p class="text-sm font-bold text-[#aee4c7]">How VendShield works</p>
+        <section class="soft-hero lg:p-7">
+            <p class="soft-eyebrow">How VendShield works</p>
             <h1 class="mt-2 text-3xl font-bold leading-tight lg:text-5xl">One flow, two protected sides.</h1>
-            <p class="mt-4 max-w-2xl text-sm leading-6 text-[#d9f4e7] lg:text-base">Vendors log in to create and track escrow links. Buyers use public links to pay, upload receipts, confirm delivery, or raise disputes.</p>
+            <p class="mt-4 max-w-2xl soft-copy lg:text-base">Vendors log in to create and track escrow links. Buyers use public links to pay, upload receipts, confirm delivery, or raise disputes.</p>
         </section>
 
         <section class="grid grid-cols-3 gap-3">

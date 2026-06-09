@@ -5,26 +5,26 @@
         <section class="dashboard-hero animate-rise">
             <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                    <p class="text-sm font-bold text-[#aee4c7]">Vendor workspace</p>
+                    <p class="soft-eyebrow">Vendor workspace</p>
                     <h1 class="mt-2 text-3xl font-bold leading-tight lg:text-4xl">Welcome back, <span data-dashboard-name>Vendor</span></h1>
-                    <p data-dashboard-summary class="mt-3 max-w-2xl text-sm leading-6 text-[#d9f4e7]">Loading your escrow activity...</p>
+                    <p data-dashboard-summary class="mt-3 max-w-2xl soft-copy">Loading your escrow activity...</p>
                 </div>
 
-                <a href="{{ route('transactions.create') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-bold text-[#103d2a] shadow-lg shadow-black/10">Create Payment Link</a>
+                <a href="{{ route('transactions.create') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#16a35f] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#16a35f]/15">Create Payment Link</a>
             </div>
 
             <div class="mt-6 grid gap-3 sm:grid-cols-2">
-                <div class="rounded-lg bg-white/10 p-4">
-                    <p class="text-sm font-medium text-[#b8dacb]">Protected in escrow</p>
+                <div class="rounded-lg bg-[#f8fbf8] p-4">
+                    <p class="text-sm font-medium text-[#668175]">Protected in escrow</p>
                     <p data-metric="escrow" class="mt-2 text-3xl font-bold">&#8358;0</p>
                 </div>
-                <div class="rounded-lg bg-white/10 p-4">
+                <div class="rounded-lg bg-[#f8fbf8] p-4">
                     <div class="flex items-center justify-between gap-3">
-                        <p class="text-sm font-medium text-[#b8dacb]">Trust Score</p>
-                        <span data-trust-level class="rounded-full bg-white/12 px-3 py-1 text-xs font-bold text-[#d9f4e7]">New Vendor</span>
+                        <p class="text-sm font-medium text-[#668175]">Trust Score</p>
+                        <span data-trust-level class="rounded-full bg-[#eef8f1] px-3 py-1 text-xs font-bold text-[#0c6f43]">New Vendor</span>
                     </div>
                     <p data-metric="trust" class="mt-2 text-3xl font-bold">50/100</p>
-                    <div class="mt-3 h-2 rounded-full bg-white/15">
+                    <div class="mt-3 h-2 rounded-full bg-[#edf2ee]">
                         <div data-trust-bar class="h-2 rounded-full bg-[#44d07b] transition-all duration-700" style="width: 50%"></div>
                     </div>
                 </div>

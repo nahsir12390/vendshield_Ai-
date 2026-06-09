@@ -2,14 +2,14 @@
 
 @section('content')
     <div data-protected data-page="create-transaction" class="space-y-5 lg:space-y-6">
-        <section class="rounded-lg bg-[#103d2a] p-5 text-white lg:p-6">
+        <section class="soft-hero">
             <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                    <p class="text-sm font-bold text-[#aee4c7]">Vendor workflow</p>
+                    <p class="soft-eyebrow">Vendor workflow</p>
                     <h1 class="mt-2 text-3xl font-bold leading-tight lg:text-4xl">Create escrow transaction</h1>
-                    <p class="mt-3 max-w-2xl text-sm leading-6 text-[#d9f4e7]">Generate a checkout link, send it to your buyer, and let VendShield protect the payment until delivery is confirmed.</p>
+                    <p class="mt-3 max-w-2xl soft-copy">Generate a checkout link, send it to your buyer, and let VendShield protect the payment until delivery is confirmed.</p>
                 </div>
-                <span class="w-fit rounded-full bg-white/12 px-3 py-1 text-xs font-bold text-[#d9f4e7]">Secure workspace</span>
+                <span class="w-fit rounded-full bg-[#eef8f1] px-3 py-1 text-xs font-bold text-[#0c6f43]">Secure workspace</span>
             </div>
         </section>
 
