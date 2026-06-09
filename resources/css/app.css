@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer base {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@layer components {
+    .nav-item {
+        @apply flex min-h-12 flex-col items-center justify-center gap-1 rounded-lg text-xs font-bold text-[#668175];
+    }
+
+    .nav-item-active {
+        @apply bg-[#eef8f1] text-[#0c6f43];
+    }
+
+    .side-nav-item {
+        @apply flex min-h-12 items-center gap-3 rounded-lg px-4 py-3 text-sm font-bold text-[#668175] transition hover:bg-[#f4f7f4] hover:text-[#103d2a];
+    }
+
+    .side-nav-item-active {
+        @apply bg-[#eef8f1] text-[#0c6f43];
+    }
+
+    .status-pill {
+        @apply inline-flex min-h-8 items-center rounded-full px-3 py-1 text-xs font-bold;
+    }
+
+    .status-success {
+        @apply bg-[#e8fbef] text-[#08723f];
+    }
+
+    .status-info {
+        @apply bg-[#e8f4ff] text-[#1169a8];
+    }
+
+    .status-warning {
+        @apply bg-[#fff6df] text-[#9a6500];
+    }
+
+    .status-danger {
+        @apply bg-[#ffe8e5] text-[#b42318];
+    }
+
+    .primary-button {
+        @apply flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#16a35f] px-5 py-3 text-center font-bold text-white shadow-lg shadow-[#16a35f]/15 disabled:cursor-not-allowed disabled:opacity-70;
+    }
+
+    .dark-button {
+        @apply flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#103d2a] px-5 py-3 text-center font-bold text-white disabled:cursor-not-allowed disabled:opacity-70;
+    }
+
+    .ghost-button {
+        @apply flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-[#dce7df] bg-white px-5 py-3 text-center font-bold text-[#103d2a];
+    }
+
+    .metric-card {
+        @apply rounded-lg border border-[#dce7df] bg-white p-4 lg:p-5;
+    }
+
+    .dashboard-hero {
+        @apply overflow-hidden rounded-lg bg-[#103d2a] p-5 text-white lg:p-6;
+    }
+
+    .stat-card {
+        @apply rounded-lg border border-[#dce7df] bg-white p-4 transition duration-200 lg:p-5 lg:hover:-translate-y-1 lg:hover:shadow-lg lg:hover:shadow-black/5;
+    }
+
+    .stat-icon {
+        @apply grid h-10 w-10 place-items-center rounded-lg;
+    }
+
+    .transaction-card {
+        @apply rounded-lg border border-[#dce7df] bg-white p-4 transition duration-200 lg:hover:-translate-y-1 lg:hover:shadow-lg lg:hover:shadow-black/5;
+    }
+
+    .activity-item {
+        @apply flex gap-3 rounded-lg bg-[#f8fbf8] p-3;
+    }
+
+    .form-field {
+        @apply block space-y-2;
+    }
+
+    .form-field span {
+        @apply block text-sm font-bold text-[#30463b];
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        @apply min-h-12 w-full rounded-lg border border-[#dce7df] bg-[#f8fbf8] px-4 py-3 text-base font-semibold text-[#102019] outline-none transition focus:border-[#16a35f] focus:bg-white focus:ring-4 focus:ring-[#16a35f]/10;
+    }
+}
+
+@layer utilities {
+    .animate-rise {
+        animation: rise-in 420ms ease both;
+    }
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-rise {
+        animation: none;
+    }
+}
