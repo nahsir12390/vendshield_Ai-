@@ -30,7 +30,7 @@
             </div>
 
             <div class="order-1 lg:order-2">
-                <img src="{{ asset('images/escrow-hero-illustration.png') }}" alt="Illustration of secure escrow payments on mobile phones" class="mx-auto w-full max-w-[560px] rounded-lg object-cover shadow-2xl shadow-[#103d2a]/10">
+                <img src="{{ asset('images/escrow-hero-illustration.webp') }}" width="960" height="640" decoding="async" fetchpriority="high" alt="Illustration of secure escrow payments on mobile phones" class="mx-auto w-full max-w-[560px] rounded-lg object-cover shadow-2xl shadow-[#103d2a]/10">
             </div>
         </section>
     </div>
