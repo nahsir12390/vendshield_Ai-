@@ -47,6 +47,7 @@ Route::any('/frontend-api/{path}', function (Request $request, string $path) {
 })->where('path', '.*')->name('frontend-api.proxy');
 
 Route::view('/', 'landing')->name('landing');
+Route::view('/how-it-works', 'how-it-works')->name('how-it-works');
 
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/register', 'auth.register')->name('register');

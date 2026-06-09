@@ -33,7 +33,7 @@
                         </svg>
                         <span>Home</span>
                     </a>
-                    <a href="{{ route('landing') }}#how-it-works" class="side-nav-item">
+                    <a href="{{ route('how-it-works') }}" class="side-nav-item {{ request()->routeIs('how-it-works') ? 'side-nav-item-active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10" />
                             <path d="M12 16v-4" />
@@ -109,7 +109,7 @@
             </aside>
 
             <div class="flex min-h-screen flex-col">
-            <header class="sticky top-0 z-20 border-b border-[#dbe6dc] bg-[#f9fbf8]/95 px-5 py-4 backdrop-blur lg:bg-white/95 lg:px-8">
+            <header class="sticky top-0 z-20 border-b border-[#dbe6dc] bg-[#f9fbf8]/95 px-5 py-4 backdrop-blur lg:hidden">
                 <div class="flex items-center justify-between gap-4">
                     <a href="{{ route('landing') }}" class="flex items-center gap-3">
                         <span class="grid h-10 w-10 place-items-center rounded-lg bg-[#103d2a] text-sm font-bold text-white">VS</span>
@@ -143,7 +143,7 @@
                         </svg>
                         <span>Home</span>
                     </a>
-                    <a href="{{ route('landing') }}#how-it-works" class="nav-item">
+                    <a href="{{ route('how-it-works') }}" class="nav-item {{ request()->routeIs('how-it-works') ? 'nav-item-active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10" />
                             <path d="M12 16v-4" />

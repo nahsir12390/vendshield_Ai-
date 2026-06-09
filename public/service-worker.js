@@ -1,8 +1,9 @@
-const CACHE_NAME = 'vendshield-ai-v1';
+const CACHE_NAME = 'vendshield-ai-v2';
 const APP_SHELL = [
     '/',
     '/login',
     '/register',
+    '/how-it-works',
     '/dashboard',
     '/transactions',
     '/transactions/create'
