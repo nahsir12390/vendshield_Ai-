@@ -212,6 +212,13 @@ document.querySelectorAll('[data-protected]').forEach(() => {
 if (getToken()) {
     document.querySelectorAll('[data-guest-note]').forEach((note) => note.classList.add('hidden'));
     document.querySelectorAll('[data-vendor-note]').forEach((note) => note.classList.remove('hidden'));
+    document.querySelectorAll('[data-guest-nav]').forEach((nav) => nav.classList.add('hidden'));
+    document.querySelectorAll('[data-vendor-nav]').forEach((nav) => {
+        nav.classList.remove('hidden');
+        if (nav.classList.contains('grid-cols-4')) {
+            nav.classList.add('grid');
+        }
+    });
 }
 
 document.querySelectorAll('[data-guest-page]').forEach(() => {

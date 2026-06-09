@@ -25,7 +25,42 @@
                     </span>
                 </a>
 
-                <nav class="mt-8 space-y-2">
+                <nav data-guest-nav class="mt-8 space-y-2">
+                    <a href="{{ route('landing') }}" class="side-nav-item {{ request()->routeIs('landing') ? 'side-nav-item-active' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 11 12 3l9 8" />
+                            <path d="M5 10v10h14V10" />
+                        </svg>
+                        <span>Home</span>
+                    </a>
+                    <a href="{{ route('landing') }}#how-it-works" class="side-nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4" />
+                            <path d="M12 8h.01" />
+                        </svg>
+                        <span>How it works</span>
+                    </a>
+                    <a href="{{ route('login') }}" class="side-nav-item {{ request()->routeIs('login') ? 'side-nav-item-active' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                            <path d="m10 17 5-5-5-5" />
+                            <path d="M15 12H3" />
+                        </svg>
+                        <span>Login</span>
+                    </a>
+                    <a href="{{ route('register') }}" class="side-nav-item {{ request()->routeIs('register') ? 'side-nav-item-active' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M19 8v6" />
+                            <path d="M22 11h-6" />
+                        </svg>
+                        <span>Sign up</span>
+                    </a>
+                </nav>
+
+                <nav data-vendor-nav class="mt-8 hidden space-y-2">
                     <a href="{{ route('dashboard') }}" class="side-nav-item {{ request()->routeIs('dashboard') ? 'side-nav-item-active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 3v18h18" />
@@ -100,7 +135,42 @@
             </section>
 
             <nav class="sticky bottom-0 z-20 border-t border-[#dbe6dc] bg-white px-5 py-3 lg:hidden">
-                <div class="grid grid-cols-4 gap-2">
+                <div data-guest-nav class="grid grid-cols-4 gap-2">
+                    <a href="{{ route('landing') }}" class="nav-item {{ request()->routeIs('landing') ? 'nav-item-active' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 11 12 3l9 8" />
+                            <path d="M5 10v10h14V10" />
+                        </svg>
+                        <span>Home</span>
+                    </a>
+                    <a href="{{ route('landing') }}#how-it-works" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4" />
+                            <path d="M12 8h.01" />
+                        </svg>
+                        <span>Info</span>
+                    </a>
+                    <a href="{{ route('login') }}" class="nav-item {{ request()->routeIs('login') ? 'nav-item-active' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                            <path d="m10 17 5-5-5-5" />
+                            <path d="M15 12H3" />
+                        </svg>
+                        <span>Login</span>
+                    </a>
+                    <a href="{{ route('register') }}" class="nav-item {{ request()->routeIs('register') ? 'nav-item-active' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M19 8v6" />
+                            <path d="M22 11h-6" />
+                        </svg>
+                        <span>Signup</span>
+                    </a>
+                </div>
+
+                <div data-vendor-nav class="hidden grid-cols-4 gap-2">
                     <a href="{{ route('dashboard') }}" class="nav-item {{ request()->routeIs('dashboard') ? 'nav-item-active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 3v18h18" />
