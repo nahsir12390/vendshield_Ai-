@@ -81,7 +81,7 @@
 
                 <section class="metric-card">
                     <h2 class="text-lg font-bold">Session</h2>
-                    <p class="mt-2 text-sm leading-6 text-[#668175]">Logout clears the saved JWT from this browser.</p>
+                    <p class="mt-2 text-sm leading-6 text-[#668175]">Logout clears this vendor session from your browser.</p>
                     <button type="button" data-logout class="mt-4 dark-button">Logout</button>
                 </section>
             </aside>

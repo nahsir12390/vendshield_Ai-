@@ -9,7 +9,7 @@
 
             <div class="mt-4 grid grid-cols-3 gap-2 lg:mt-8 lg:grid-cols-1 lg:gap-3">
                 <div class="rounded-lg bg-white/10 p-3 lg:p-4">
-                    <p class="text-base font-bold lg:text-xl">JWT</p>
+                    <p class="text-base font-bold lg:text-xl">Secure</p>
                     <p class="mt-1 hidden text-sm text-[#d9f4e7] sm:block">Secure vendor session</p>
                 </div>
                 <div class="rounded-lg bg-white/10 p-3 lg:p-4">

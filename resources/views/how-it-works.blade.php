@@ -14,8 +14,8 @@
                 <p class="mt-1 text-xs font-semibold text-[#668175]">Receipt checks</p>
             </div>
             <div class="metric-card text-center">
-                <p class="text-xl font-bold">JWT</p>
-                <p class="mt-1 text-xs font-semibold text-[#668175]">Vendor security</p>
+                <p class="text-xl font-bold">Secure</p>
+                <p class="mt-1 text-xs font-semibold text-[#668175]">Vendor login</p>
             </div>
             <div class="metric-card text-center">
                 <p class="text-xl font-bold">PWA</p>
