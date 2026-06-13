@@ -80,7 +80,15 @@ const apiFetch = async (path, options = {}) => {
     });
 
     const text = await response.text();
-    const payload = text ? JSON.parse(text) : {};
+    let payload = {};
+
+    if (text) {
+        try {
+            payload = JSON.parse(text);
+        } catch {
+            payload = { message: response.ok ? text : 'The server could not process this request right now.' };
+        }
+    }
 
     if (!response.ok) {
         const error = new Error(payload.message || payload.error || 'Request failed');
@@ -589,17 +597,39 @@ document.querySelectorAll('[data-receipt-form]').forEach((form) => {
         event.preventDefault();
 
         const submit = form.querySelector('button[type="submit"]');
+        const alert = form.querySelector('[data-receipt-error]');
+        const friendlyReceiptError = 'Receipt upload could not be completed right now. Please try again or contact the vendor.';
+
+        if (alert) {
+            alert.classList.add('hidden');
+            alert.textContent = '';
+        }
+
         setLoading(submit, true);
 
         try {
+            const formData = new FormData(form);
+            const receipt = formData.get('receipt');
+
+            if (receipt instanceof File && receipt.size > 0 && !formData.has('image')) {
+                formData.append('image', receipt);
+            }
+
             const payload = await apiFetch(`/api/receipt/upload/${form.dataset.receiptForm}`, {
                 method: 'POST',
-                body: new FormData(form),
+                body: formData,
             });
 
             toast(payload.message || 'Receipt uploaded for AI verification');
         } catch (error) {
-            toast(error.message, 'error');
+            const message = error.status >= 500 ? friendlyReceiptError : (error.message || friendlyReceiptError);
+
+            if (alert) {
+                alert.textContent = message;
+                alert.classList.remove('hidden');
+            }
+
+            toast(message, 'error');
         } finally {
             setLoading(submit, false);
         }

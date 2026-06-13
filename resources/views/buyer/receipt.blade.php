@@ -26,6 +26,7 @@
             </label>
 
             <button type="submit" class="primary-button">Submit for AI Verification</button>
+            <p data-receipt-error class="hidden rounded-lg border border-[#ffd6d1] bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]"></p>
         </form>
 
         <a href="{{ route('delivery', ['id' => $id]) }}" class="ghost-button">Continue to delivery</a>
