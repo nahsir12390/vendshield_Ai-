@@ -609,8 +609,6 @@ document.querySelectorAll('[data-receipt-form]').forEach((form) => {
         const submit = form.querySelector('button[type="submit"]');
         const alert = form.querySelector('[data-receipt-error]');
         const notice = form.querySelector('[data-receipt-status]');
-        const friendlyReceiptError = 'Receipt upload could not be completed right now. Please try again or contact the vendor.';
-
         if (alert) {
             alert.classList.add('hidden');
             alert.textContent = '';
@@ -632,21 +630,19 @@ document.querySelectorAll('[data-receipt-form]').forEach((form) => {
             });
 
             const status = responseStatus(payload);
-            const message = payload.message || payload.data?.message || 'Receipt submitted for verification.';
-            const isFlagged = status.includes('FLAG') || status.includes('SUSPICIOUS') || /flag|suspicious|fake|forgery|invalid/i.test(message);
+            const message = payload.message || payload.error || payload.data?.message || payload.data?.error || 'Receipt submitted for verification.';
+            const isWarning = payload.success === false || status.includes('FLAG') || status.includes('SUSPICIOUS');
 
             if (notice) {
-                notice.textContent = isFlagged
-                    ? 'Receipt flagged for review. Please do not continue delivery until the vendor checks this transaction.'
-                    : message;
-                notice.className = isFlagged
+                notice.textContent = message;
+                notice.className = isWarning
                     ? 'rounded-lg border border-[#ffd6d1] bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]'
                     : 'rounded-lg border border-[#cdeed8] bg-[#eefaf2] px-4 py-3 text-sm font-semibold leading-6 text-[#08723f]';
             }
 
-            toast(isFlagged ? 'Receipt flagged for review' : message, isFlagged ? 'error' : 'success');
+            toast(message, isWarning ? 'error' : 'success');
         } catch (error) {
-            const message = error.status >= 500 ? friendlyReceiptError : (error.message || friendlyReceiptError);
+            const message = error.message || 'Request failed';
 
             if (alert) {
                 alert.textContent = message;
