@@ -538,14 +538,49 @@ document.querySelectorAll('[data-payment-form]').forEach((form) => {
 const paymentCallback = document.querySelector('[data-page="payment-callback"]');
 if (paymentCallback) {
     const params = new URLSearchParams(window.location.search);
-    const reference = params.get('reference') || params.get('trxref') || params.get('transactionReference') || 'No reference found';
+    const reference = params.get('reference') || params.get('trxref') || params.get('transactionReference');
     const transactionId = params.get('transactionId') || params.get('transaction_id') || params.get('id');
+    const status = document.querySelector('[data-callback-status]');
 
-    document.querySelector('[data-payment-reference]').textContent = reference;
+    document.querySelector('[data-payment-reference]').textContent = reference || 'No reference found';
 
     if (transactionId) {
         document.querySelector('[data-callback-receipt-link]').href = `/receipt/${transactionId}`;
         document.querySelector('[data-callback-checkout-link]').href = `/checkout/${transactionId}`;
+    }
+
+    if (reference) {
+        apiFetch('/api/payment/callback', {
+            method: 'POST',
+            body: JSON.stringify({ reference }),
+        })
+            .then((payload) => {
+                const transaction = normalizeTransaction(payload);
+                const confirmedId = transaction.id || transaction.transactionId || transaction.transaction_id || transactionId;
+
+                if (confirmedId) {
+                    document.querySelector('[data-callback-receipt-link]').href = `/receipt/${confirmedId}`;
+                    document.querySelector('[data-callback-checkout-link]').href = `/checkout/${confirmedId}`;
+                }
+
+                if (status) {
+                    status.textContent = payload.message || 'Payment confirmed. You can now continue.';
+                    status.className = 'mt-4 rounded-lg bg-[#e8fbef] px-4 py-3 text-sm font-semibold leading-6 text-[#08723f]';
+                }
+
+                toast(payload.message || 'Payment confirmed');
+            })
+            .catch((error) => {
+                if (status) {
+                    status.textContent = error.message || 'Payment confirmation failed. Please contact the vendor.';
+                    status.className = 'mt-4 rounded-lg bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]';
+                }
+
+                toast(error.message || 'Payment confirmation failed', 'error');
+            });
+    } else if (status) {
+        status.textContent = 'No Paystack reference was found. Please return to checkout and try again.';
+        status.className = 'mt-4 rounded-lg bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]';
     }
 }
 

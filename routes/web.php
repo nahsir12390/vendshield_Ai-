@@ -75,6 +75,7 @@ Route::view('/profile', 'profile')->name('profile');
 Route::get('/checkout/{id}', fn (string $id) => view('buyer.checkout', ['id' => $id]))->name('checkout');
 Route::get('/payment/{id}', fn (string $id) => view('buyer.payment', ['id' => $id]))->name('payment');
 Route::view('/payment/callback', 'buyer.payment-callback')->name('payment.callback');
+Route::view('/api/payment/callback', 'buyer.payment-callback')->name('payment.callback.paystack');
 Route::get('/receipt/{id}', fn (string $id) => view('buyer.receipt', ['id' => $id]))->name('receipt');
 Route::get('/delivery/{id}', fn (string $id) => view('buyer.delivery', ['id' => $id]))->name('delivery');
 Route::get('/dispute/{id}', fn (string $id) => view('buyer.dispute', ['id' => $id]))->name('dispute');
