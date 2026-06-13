@@ -587,7 +587,7 @@ if (paymentCallback) {
                 toast(error.message || 'Payment confirmation failed', 'error');
             });
     } else if (status) {
-        status.textContent = 'No Paystack reference was found. Please return to checkout and try again.';
+        status.textContent = 'No payment reference was found. Please return to checkout and try again.';
         status.className = 'mt-4 rounded-lg bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]';
     }
 }

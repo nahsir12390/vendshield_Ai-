@@ -5,7 +5,7 @@
         <section class="soft-hero">
             <p class="soft-eyebrow">Payment returned</p>
             <h1 class="mt-1 text-2xl font-bold">Checking payment status</h1>
-            <p class="mt-2 soft-copy">Please wait while VendShield confirms this Paystack payment.</p>
+            <p class="mt-2 soft-copy">Please wait while VendShield confirms this payment.</p>
         </section>
 
         <section class="metric-card">
