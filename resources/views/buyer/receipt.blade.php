@@ -13,7 +13,9 @@
             <p class="mt-2 text-sm text-[#668175]">Expected payment: <span data-total class="font-bold text-[#0c6f43]">₦0</span></p>
         </section>
 
-        <form data-receipt-form="{{ $id }}" class="space-y-4 rounded-lg border border-[#dce7df] bg-white p-4">
+        <p data-receipt-locked class="rounded-lg border border-[#fff0c2] bg-[#fff9e8] px-4 py-3 text-sm font-semibold leading-6 text-[#8a5a00]">Payment must be completed before uploading payment proof.</p>
+
+        <form data-receipt-form="{{ $id }}" data-requires-paid class="hidden space-y-4 rounded-lg border border-[#dce7df] bg-white p-4">
             <label class="flex min-h-36 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-[#a9beae] bg-[#f8fbf8] p-4 text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#0c6f43]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -30,6 +32,6 @@
             <p data-receipt-error class="hidden rounded-lg border border-[#ffd6d1] bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]"></p>
         </form>
 
-        <a href="{{ route('delivery', ['id' => $id]) }}" class="ghost-button">Continue to delivery</a>
+        <a href="{{ route('delivery', ['id' => $id]) }}" data-requires-paid class="ghost-button hidden">Continue to delivery</a>
     </div>
 @endsection

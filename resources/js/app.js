@@ -128,6 +128,11 @@ const titleCaseStatus = (status = 'PENDING') => status.replaceAll('_', ' ').toLo
 
 const transactionTypeLabel = (type = '') => titleCaseStatus(type || 'Transaction');
 
+const isPaidStatus = (status = '') => {
+    const value = String(status).toUpperCase();
+    return value.includes('PAID') || value.includes('VERIFIED') || value.includes('FLAG') || value.includes('COMPLETE');
+};
+
 const responseStatus = (payload = {}) => String(
     payload.status
     || payload.transaction?.status
@@ -488,6 +493,12 @@ if (checkoutPage) {
             document.querySelectorAll('[data-status]').forEach((node) => {
                 node.textContent = titleCaseStatus(item.status);
                 node.className = `status-pill ${statusClass(item.status)} self-start`;
+            });
+            document.querySelectorAll('[data-requires-paid]').forEach((node) => {
+                node.classList.toggle('hidden', !isPaidStatus(item.status));
+            });
+            document.querySelectorAll('[data-payment-required], [data-receipt-locked]').forEach((node) => {
+                node.classList.toggle('hidden', isPaidStatus(item.status));
             });
             document.querySelectorAll('[data-vendor-name]').forEach((node) => node.textContent = vendor.fullName || vendor.full_name || item.vendorName || 'Verified vendor');
             document.querySelectorAll('[data-vendor-trust]').forEach((node) => node.textContent = `${vendor.trustScore ?? item.trustScore ?? 50}/100`);

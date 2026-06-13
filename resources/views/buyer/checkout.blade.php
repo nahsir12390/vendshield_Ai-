@@ -35,8 +35,9 @@
 
         <div class="space-y-3">
             <a href="{{ route('payment', ['id' => $id]) }}" class="primary-button">Pay Securely</a>
-            <a href="{{ route('receipt', ['id' => $id]) }}" class="dark-button">Upload Receipt</a>
-            <a href="{{ route('delivery', ['id' => $id]) }}" class="ghost-button">Confirm Delivery</a>
+            <a href="{{ route('receipt', ['id' => $id]) }}" data-requires-paid class="dark-button hidden">Upload Payment Proof</a>
+            <a href="{{ route('delivery', ['id' => $id]) }}" data-requires-paid class="ghost-button hidden">Confirm Delivery</a>
+            <p data-payment-required class="rounded-lg border border-[#fff0c2] bg-[#fff9e8] px-4 py-3 text-sm font-semibold leading-6 text-[#8a5a00]">Upload proof and delivery confirmation will be available after payment is completed.</p>
         </div>
     </div>
 @endsection
