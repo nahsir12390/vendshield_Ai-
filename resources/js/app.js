@@ -488,12 +488,23 @@ document.querySelectorAll('[data-payment-form]').forEach((form) => {
                 method: 'POST',
                 body: JSON.stringify(data),
             });
-            const url = payload.checkoutUrl || payload.paymentUrl || payload.url || payload.data?.checkoutUrl || payload.data?.paymentUrl;
+            const url = payload.authorization_url
+                || payload.authorizationUrl
+                || payload.checkoutUrl
+                || payload.paymentUrl
+                || payload.url
+                || payload.data?.authorization_url
+                || payload.data?.authorizationUrl
+                || payload.data?.checkoutUrl
+                || payload.data?.paymentUrl
+                || payload.data?.url;
 
             toast('Payment session created');
 
             if (url) {
                 window.location.href = url;
+            } else {
+                toast('Payment link was not returned by backend', 'error');
             }
         } catch (error) {
             toast(error.message, 'error');
@@ -502,6 +513,20 @@ document.querySelectorAll('[data-payment-form]').forEach((form) => {
         }
     });
 });
+
+const paymentCallback = document.querySelector('[data-page="payment-callback"]');
+if (paymentCallback) {
+    const params = new URLSearchParams(window.location.search);
+    const reference = params.get('reference') || params.get('trxref') || params.get('transactionReference') || 'No reference found';
+    const transactionId = params.get('transactionId') || params.get('transaction_id') || params.get('id');
+
+    document.querySelector('[data-payment-reference]').textContent = reference;
+
+    if (transactionId) {
+        document.querySelector('[data-callback-receipt-link]').href = `/receipt/${transactionId}`;
+        document.querySelector('[data-callback-checkout-link]').href = `/checkout/${transactionId}`;
+    }
+}
 
 document.querySelectorAll('[data-receipt-form]').forEach((form) => {
     form.addEventListener('submit', async (event) => {

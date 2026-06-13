@@ -49,7 +49,7 @@
                 <div class="grid gap-3 sm:grid-cols-2">
                     <label class="form-field">
                         <span>Bank Name</span>
-                        <input name="bankName" type="text" placeholder="OPay">
+                        <input name="bankName" type="text" placeholder="Bank name">
                     </label>
 
                     <label class="form-field">
