@@ -609,11 +609,6 @@ document.querySelectorAll('[data-receipt-form]').forEach((form) => {
 
         try {
             const formData = new FormData(form);
-            const receipt = formData.get('receipt');
-
-            if (receipt instanceof File && receipt.size > 0 && !formData.has('image')) {
-                formData.append('image', receipt);
-            }
 
             const payload = await apiFetch(`/api/receipt/upload/${form.dataset.receiptForm}`, {
                 method: 'POST',
