@@ -5,7 +5,7 @@
         <section>
             <p class="text-sm font-bold text-[#16834f]">AI Receipt Check</p>
             <h1 class="mt-1 text-2xl font-bold">Upload payment proof</h1>
-            <p class="mt-2 text-sm leading-6 text-[#668175]">Upload a payment confirmation screenshot, bank debit alert, or transfer receipt. VendShield AI will check it automatically.</p>
+            <p class="mt-2 text-sm leading-6 text-[#668175]">Upload a payment confirmation screenshot, bank debit alert, or transfer receipt. VendShield AI will check it automatically; this can take a few moments.</p>
         </section>
 
         <section class="metric-card">

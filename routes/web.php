@@ -7,43 +7,49 @@ use Illuminate\Support\Facades\Route;
 
 Route::any('/frontend-api/{path}', function (Request $request, string $path) {
     $backendUrl = 'https://vendshield-backend-production.up.railway.app/' . $path;
-    $client = Http::acceptJson();
+    $client = Http::acceptJson()->timeout(120);
 
     if ($request->bearerToken()) {
         $client = $client->withToken($request->bearerToken());
     }
 
-    if (count($request->allFiles()) > 0) {
-        $client = $client->asMultipart();
+    try {
+        if (count($request->allFiles()) > 0) {
+            $client = $client->asMultipart();
 
-        foreach ($request->allFiles() as $field => $file) {
-            $files = is_array($file) ? $file : [$file];
+            foreach ($request->allFiles() as $field => $file) {
+                $files = is_array($file) ? $file : [$file];
 
-            foreach ($files as $uploadedFile) {
-                if ($uploadedFile instanceof UploadedFile) {
-                    $client = $client->attach(
-                        $field,
-                        file_get_contents($uploadedFile->getRealPath()),
-                        $uploadedFile->getClientOriginalName()
-                    );
+                foreach ($files as $uploadedFile) {
+                    if ($uploadedFile instanceof UploadedFile) {
+                        $client = $client->attach(
+                            $field,
+                            file_get_contents($uploadedFile->getRealPath()),
+                            $uploadedFile->getClientOriginalName()
+                        );
+                    }
                 }
             }
+
+            $response = $client->send($request->method(), $backendUrl, [
+                'multipart' => collect($request->except(array_keys($request->allFiles())))
+                    ->map(fn ($value, $key) => ['name' => $key, 'contents' => $value])
+                    ->values()
+                    ->all(),
+            ]);
+        } else {
+            $response = $client->send($request->method(), $backendUrl, [
+                'json' => $request->all(),
+            ]);
         }
 
-        $response = $client->send($request->method(), $backendUrl, [
-            'multipart' => collect($request->except(array_keys($request->allFiles())))
-                ->map(fn ($value, $key) => ['name' => $key, 'contents' => $value])
-                ->values()
-                ->all(),
-        ]);
-    } else {
-        $response = $client->send($request->method(), $backendUrl, [
-            'json' => $request->all(),
-        ]);
+        return response($response->body(), $response->status())
+            ->header('Content-Type', $response->header('Content-Type', 'application/json'));
+    } catch (\Throwable) {
+        return response()->json([
+            'message' => 'The backend service did not respond in time. Please try again.',
+        ], 504);
     }
-
-    return response($response->body(), $response->status())
-        ->header('Content-Type', $response->header('Content-Type', 'application/json'));
 })->where('path', '.*')->name('frontend-api.proxy');
 
 Route::view('/', 'landing')->name('landing');
