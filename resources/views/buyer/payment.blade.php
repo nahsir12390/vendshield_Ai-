@@ -28,6 +28,7 @@
             </label>
 
             <button type="submit" class="primary-button">Continue to Paystack</button>
+            <p data-payment-error class="hidden rounded-lg border border-[#ffd6d1] bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]"></p>
         </form>
 
         <a href="{{ route('receipt', ['id' => $id]) }}" class="ghost-button">I already paid</a>

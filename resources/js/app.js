@@ -83,7 +83,9 @@ const apiFetch = async (path, options = {}) => {
     const payload = text ? JSON.parse(text) : {};
 
     if (!response.ok) {
-        throw new Error(payload.message || payload.error || 'Request failed');
+        const error = new Error(payload.message || payload.error || 'Request failed');
+        error.status = response.status;
+        throw error;
     }
 
     return payload;
@@ -480,6 +482,14 @@ document.querySelectorAll('[data-payment-form]').forEach((form) => {
         event.preventDefault();
 
         const button = form.querySelector('button[type="submit"]');
+        const alert = form.querySelector('[data-payment-error]');
+        const friendlyPaymentError = 'Payment could not start right now. Please try again in a moment or contact the vendor.';
+
+        if (alert) {
+            alert.classList.add('hidden');
+            alert.textContent = '';
+        }
+
         setLoading(button, true);
 
         try {
@@ -504,10 +514,21 @@ document.querySelectorAll('[data-payment-form]').forEach((form) => {
             if (url) {
                 window.location.href = url;
             } else {
-                toast('Payment link was not returned by backend', 'error');
+                if (alert) {
+                    alert.textContent = friendlyPaymentError;
+                    alert.classList.remove('hidden');
+                }
+                toast(friendlyPaymentError, 'error');
             }
         } catch (error) {
-            toast(error.message, 'error');
+            const message = error.status >= 500 ? friendlyPaymentError : (error.message || friendlyPaymentError);
+
+            if (alert) {
+                alert.textContent = message;
+                alert.classList.remove('hidden');
+            }
+
+            toast(message, 'error');
         } finally {
             setLoading(button, false);
         }
