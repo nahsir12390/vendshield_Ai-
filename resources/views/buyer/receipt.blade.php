@@ -4,8 +4,8 @@
     <div data-page="checkout" data-transaction-id-value="{{ $id }}" class="space-y-5">
         <section>
             <p class="text-sm font-bold text-[#16834f]">AI Receipt Check</p>
-            <h1 class="mt-1 text-2xl font-bold">Upload payment receipt</h1>
-            <p class="mt-2 text-sm leading-6 text-[#668175]">Upload an image from your camera or gallery. VendShield AI will check it automatically.</p>
+            <h1 class="mt-1 text-2xl font-bold">Upload payment proof</h1>
+            <p class="mt-2 text-sm leading-6 text-[#668175]">Upload a payment confirmation screenshot, bank debit alert, or transfer receipt. VendShield AI will check it automatically.</p>
         </section>
 
         <section class="metric-card">
@@ -20,12 +20,13 @@
                     <path d="M17 8 12 3 7 8" />
                     <path d="M12 3v12" />
                 </svg>
-                <span id="receipt-file-name" class="mt-3 text-sm font-bold">Choose receipt image</span>
+                <span id="receipt-file-name" class="mt-3 text-sm font-bold">Choose payment proof</span>
                 <span class="mt-1 text-xs text-[#668175]">JPG, PNG, or camera capture</span>
                 <input name="receipt" data-file-name-target="receipt-file-name" type="file" accept="image/*" class="sr-only" required>
             </label>
 
             <button type="submit" class="primary-button">Submit for AI Verification</button>
+            <p data-receipt-status class="hidden rounded-lg border border-[#cdeed8] bg-[#eefaf2] px-4 py-3 text-sm font-semibold leading-6 text-[#08723f]"></p>
             <p data-receipt-error class="hidden rounded-lg border border-[#ffd6d1] bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]"></p>
         </form>
 

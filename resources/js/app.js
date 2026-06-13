@@ -113,7 +113,7 @@ const statusClass = (status = '') => {
         return 'status-success';
     }
 
-    if (value.includes('DISPUTE')) {
+    if (value.includes('DISPUTE') || value.includes('FLAG')) {
         return 'status-danger';
     }
 
@@ -127,6 +127,16 @@ const statusClass = (status = '') => {
 const titleCaseStatus = (status = 'PENDING') => status.replaceAll('_', ' ').toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase());
 
 const transactionTypeLabel = (type = '') => titleCaseStatus(type || 'Transaction');
+
+const responseStatus = (payload = {}) => String(
+    payload.status
+    || payload.transaction?.status
+    || payload.data?.status
+    || payload.data?.transaction?.status
+    || payload.result
+    || payload.verificationStatus
+    || ''
+).toUpperCase();
 
 const trustLevel = (score) => {
     if (score >= 90) return 'Highly Trusted';
@@ -598,11 +608,17 @@ document.querySelectorAll('[data-receipt-form]').forEach((form) => {
 
         const submit = form.querySelector('button[type="submit"]');
         const alert = form.querySelector('[data-receipt-error]');
+        const notice = form.querySelector('[data-receipt-status]');
         const friendlyReceiptError = 'Receipt upload could not be completed right now. Please try again or contact the vendor.';
 
         if (alert) {
             alert.classList.add('hidden');
             alert.textContent = '';
+        }
+
+        if (notice) {
+            notice.classList.add('hidden');
+            notice.textContent = '';
         }
 
         setLoading(submit, true);
@@ -615,7 +631,20 @@ document.querySelectorAll('[data-receipt-form]').forEach((form) => {
                 body: formData,
             });
 
-            toast(payload.message || 'Receipt uploaded for AI verification');
+            const status = responseStatus(payload);
+            const message = payload.message || payload.data?.message || 'Receipt submitted for verification.';
+            const isFlagged = status.includes('FLAG') || status.includes('SUSPICIOUS') || /flag|suspicious|fake|forgery|invalid/i.test(message);
+
+            if (notice) {
+                notice.textContent = isFlagged
+                    ? 'Receipt flagged for review. Please do not continue delivery until the vendor checks this transaction.'
+                    : message;
+                notice.className = isFlagged
+                    ? 'rounded-lg border border-[#ffd6d1] bg-[#fff3f1] px-4 py-3 text-sm font-semibold leading-6 text-[#b42318]'
+                    : 'rounded-lg border border-[#cdeed8] bg-[#eefaf2] px-4 py-3 text-sm font-semibold leading-6 text-[#08723f]';
+            }
+
+            toast(isFlagged ? 'Receipt flagged for review' : message, isFlagged ? 'error' : 'success');
         } catch (error) {
             const message = error.status >= 500 ? friendlyReceiptError : (error.message || friendlyReceiptError);
 

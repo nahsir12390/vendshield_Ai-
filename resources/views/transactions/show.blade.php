@@ -8,7 +8,7 @@
         $total = (float) ($transaction['total'] ?? ($price + $deliveryFee));
         $status = $transaction['status'] ?? 'PENDING';
         $statusLabel = ucwords(strtolower(str_replace('_', ' ', $status)));
-        $statusClass = str_contains($status, 'DISPUTED') ? 'status-danger' : (str_contains($status, 'PENDING') ? 'status-warning' : 'status-success');
+        $statusClass = (str_contains($status, 'DISPUTED') || str_contains($status, 'FLAGGED')) ? 'status-danger' : (str_contains($status, 'PENDING') ? 'status-warning' : 'status-success');
     @endphp
 
     <div data-page="transaction-detail" data-protected data-transaction-id-value="{{ $id }}" class="max-w-full space-y-5 overflow-hidden lg:space-y-6">
